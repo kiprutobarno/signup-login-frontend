@@ -19,10 +19,24 @@ const registerUser = async (e) => {
   });
 
   const response = await feedback;
+  const data = await response.json();
+
+  let errorAlert = document.getElementById("registration-error");
+  let successAlert = document.getElementById("registration-success");
+
   if (response.ok) {
-    window.location.href = "index.html";
+    successAlert.classList.remove("d-none");
+    successAlert.innerHTML = data.message;
+    setTimeout(() => {
+      successAlert.classList.add("d-none");
+      window.location.href = "index.html";
+    }, 2000);
   } else {
-    console.log(await response.json());
+    errorAlert.classList.remove("d-none");
+    errorAlert.innerHTML = data.error;
+    setTimeout(() => {
+      errorAlert.classList.add("d-none");
+    }, 2000);
   }
 };
 document.getElementById("register").addEventListener("submit", registerUser);

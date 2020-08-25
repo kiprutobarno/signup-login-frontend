@@ -16,12 +16,25 @@ const userLogin = async (e) => {
   });
 
   const response = await feedback;
-  let data = await response.json();
+  const data = await response.json();
+
+  let errorAlert = document.getElementById("login-error");
+  let successAlert = document.getElementById("login-success");
+
   if (response.ok) {
     localStorage.token = data.token;
-    window.location.href = "index.html";
+    successAlert.classList.remove("d-none");
+    successAlert.innerHTML = data.message;
+    setTimeout(() => {
+      successAlert.classList.add("d-none");
+      window.location.href = "index.html";
+    }, 2000);
   } else {
-    console.log(data);
+    errorAlert.classList.remove("d-none");
+    errorAlert.innerHTML = data.error;
+    setTimeout(() => {
+      errorAlert.classList.add("d-none");
+    }, 2000);
   }
 };
 

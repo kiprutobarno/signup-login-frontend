@@ -4,7 +4,7 @@ const userLogin = async (e) => {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
 
-  let response = fetch(url, {
+  let feedback = fetch(url, {
     method: "POST",
     headers: {
       mode: "cors",
@@ -15,13 +15,14 @@ const userLogin = async (e) => {
     body: JSON.stringify({ email: email, password: password }),
   });
 
-  const data = await response;
-  if (data.status === 200) {
-    document.location.href = "index.html";
+  const response = await feedback;
+  let data = await response.json();
+  if (response.ok) {
+    localStorage.token = data.token;
+    window.location.href = "index.html";
   } else {
-    let feedback = await data.json();
-    console.log(feedback);
+    console.log(data);
   }
 };
 
-document.getElementById("login").addEventListener("click", userLogin);
+document.getElementById("login").addEventListener("submit", userLogin);

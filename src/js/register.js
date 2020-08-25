@@ -4,7 +4,7 @@ const registerUser = async (e) => {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
 
-  let response = fetch(url, {
+  let feedback = fetch(url, {
     method: "POST",
     headers: {
       mode: "cors",
@@ -18,11 +18,11 @@ const registerUser = async (e) => {
     }),
   });
 
-  const data = await response;
-  //   const feedback = await data.json();
-  if (data.status === 201) {
+  const response = await feedback;
+  if (response.ok) {
     window.location.href = "index.html";
+  } else {
+    console.log(await response.json());
   }
 };
-
-document.getElementById("register").addEventListener("click", registerUser);
+document.getElementById("register").addEventListener("submit", registerUser);

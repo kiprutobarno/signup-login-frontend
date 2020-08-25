@@ -22,15 +22,9 @@ const registerUser = async (e) => {
   const data = await response.json();
 
   let errorAlert = document.getElementById("registration-error");
-  let successAlert = document.getElementById("registration-success");
 
   if (response.ok) {
-    successAlert.classList.remove("d-none");
-    successAlert.innerHTML = data.message;
-    setTimeout(() => {
-      successAlert.classList.add("d-none");
-      window.location.href = "index.html";
-    }, 2000);
+    window.location.href = "index.html";
   } else {
     errorAlert.classList.remove("d-none");
     errorAlert.innerHTML = data.error;

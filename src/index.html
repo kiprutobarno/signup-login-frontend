@@ -18,10 +18,24 @@
         <p class="lead">This frontent Consumes a backend API</p>
         <hr class="my-4" />
         <p>This is for learning purposes</p>
-        <a class="btn btn-primary" href="./register.html" role="button"
-          >Register</a
-        >
-        <a class="btn btn-primary" href="./login.html" role="button">Sign In</a>
+        <div class="row align-items-center">
+          <div class="col-sm-4">
+            <a
+              class="btn btn-primary justify-content-end"
+              href="./register.html"
+              role="button"
+              >Register</a
+            >
+
+            <a class="btn btn-primary" href="./login.html" role="button"
+              >Sign In</a
+            >
+          </div>
+          <div
+            class="d-flex justify-content-end col-sm-8 d-none"
+            id="users-link"
+          ></div>
+        </div>
       </div>
     </div>
     <script
@@ -34,5 +48,26 @@
       integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const parseJwt = (token) => {
+        try {
+          return JSON.parse(atob(token.split(".")[1]));
+        } catch (e) {
+          return null;
+        }
+      };
+
+      let user = parseJwt(localStorage.token);
+      let usersLink = document.getElementById("users-link");
+      let link = document.createElement("a");
+
+      link.setAttribute("href", "./users.html");
+      link.setAttribute("class", "stretched-link");
+      link.innerHTML = "View Users";
+      if (user.isAdmin) {
+        usersLink.classList.remove("d-none");
+        usersLink.appendChild(link);
+      }
+    </script>
   </body>
 </html>

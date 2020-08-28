@@ -1,0 +1,23 @@
+.forms {
+  width: 32rem;
+  margin: auto;
+  border-radius: 0.325rem;
+}
+.forms form {
+  width: 100%;
+  max-width: 31.875rem;
+  padding: 1rem;
+  margin: auto;
+}
+.forms .alert {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 0.5rem;
+}
+.forms .form-control:focus {
+  z-index: 2;
+}
+.container {
+  margin-top: 3rem;
+}

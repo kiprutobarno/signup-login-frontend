@@ -10,9 +10,10 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="container mt-3">
+    <div class="container">
       <div class="jumbotron">
         <h1 class="display-4">Welcome to our Frontend</h1>
         <p class="lead">This frontent Consumes a backend API</p>
@@ -21,13 +22,13 @@
         <div class="row align-items-center">
           <div class="col-sm-4">
             <a
-              class="btn btn-primary justify-content-end"
+              class="btn btn-success justify-content-end"
               href="./register.html"
               role="button"
               >Register</a
             >
 
-            <a class="btn btn-primary" href="./login.html" role="button"
+            <a class="btn btn-success" href="./login.html" role="button"
               >Sign In</a
             >
           </div>
@@ -63,6 +64,7 @@
 
       link.setAttribute("href", "./users.html");
       link.setAttribute("class", "stretched-link");
+      link.setAttribute("class", "text-success");
       link.innerHTML = "View Users";
       if (user.isAdmin) {
         usersLink.classList.remove("d-none");

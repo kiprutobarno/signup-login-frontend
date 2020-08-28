@@ -10,16 +10,24 @@
       integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body onload="loadUsers()">
-    <div class="container mt-5">
-      <h3 class="display-6 text-center">Registered Users</h3>
+    <div class="container">
+      <div class="alert alert-danger d-none forms" role="alert" id="alert">
+        <strong>Unauthorized!</strong>
+        You are not logged in as an Admin!
+      </div>
+      <h3 class="text-center d-none font-weight-light" id="table-title">
+        Registered Users
+      </h3>
+
       <table
-        class="table table-responsive table-bordered font-weight-light"
+        class="table table-responsive table-bordered font-weight-light d-none"
         id="table"
       >
         <tr>
-          <thead class="table-warning">
+          <thead class="table-success">
             <th>Id</th>
             <th>Email Address</th>
             <th>Date Created</th>
@@ -27,10 +35,11 @@
           </thead>
         </tr>
         <tr>
-          <tbody id="table-body"></tbody>
+          <tbody id="table-body" class="table-info"></tbody>
         </tr>
       </table>
     </div>
+
     <!-- JavaScript and dependencies -->
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

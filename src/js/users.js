@@ -10,9 +10,17 @@ const loadUsers = async () => {
       Authorization: "Bearer " + localStorage.token,
     }),
   });
+
   const response = await feedback;
   const users = await response.json();
+
+  let alert = document.getElementById("alert");
+
   if (response.ok) {
+    let tableTitle = document.getElementById("table-title");
+    let table = document.getElementById("table");
+    tableTitle.classList.remove("d-none");
+    table.classList.remove("d-none");
     let tableBody = document.getElementById("table-body");
     users.forEach((user) => {
       tableBody.innerHTML +=
@@ -29,5 +37,10 @@ const loadUsers = async () => {
         user.is_admin +
         `</td>`;
     });
+  } else {
+    alert.classList.remove("d-none");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
   }
 };

@@ -14,11 +14,12 @@ const resetPassword = async (e) => {
   });
   let response = await feedback;
   let data = await response.json();
+  console.log(data);
   let successAlert = document.getElementById("reset-success");
   let errorAlert = document.getElementById("reset-error");
   if (response.ok) {
     successAlert.classList.remove("d-none");
-    successAlert.innerHTML = data.error;
+    successAlert.innerHTML = data.message;
     setTimeout(() => {
       successAlert.classList.add("d-none");
       window.location.href = "index.html";
